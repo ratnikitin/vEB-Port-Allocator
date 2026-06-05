@@ -1,0 +1,39 @@
+# Файлы macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Файлы Windows
+Thumbs.db
+Desktop.ini
+
+# Файлы редакторов и IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+.env
+*.env
+config.env
+secrets.json
+
+node_modules/
+vendor/
+__pycache__/
+*.pyc
+
+dist/
+build/
+out/
+*.log
+*.tmp
+*.bak
+
+*.o
+*.out
+*.class
+*.jar
+*.war
+*.zip
+*.tar.gz
