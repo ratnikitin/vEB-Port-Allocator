@@ -1,0 +1,43 @@
+[Unit]
+Description=vEB Port Allocator Daemon
+Documentation=https://github.com/yourorg/veb-port-allocator
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/sbin/portd --config /etc/portd/config.json
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+RestartSec=5s
+
+# Run as dedicated user for security
+User=portd
+Group=portd
+
+# Runtime directory (for Unix socket)
+RuntimeDirectory=portd
+RuntimeDirectoryMode=0750
+
+# Hardening
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+CapabilityBoundingSet=
+AmbientCapabilities=
+RestrictNamespaces=yes
+LockPersonality=yes
+RestrictRealtime=yes
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+MemoryDenyWriteExecute=yes
+ReadWritePaths=/run/portd /var/log
+
+# Resource limits
+LimitNOFILE=65536
+LimitNPROC=512
+
+[Install]
+WantedBy=multi-user.target

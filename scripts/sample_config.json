@@ -1,0 +1,29 @@
+{
+  "listen": "unix:///var/run/portd/portd.sock",
+  "log_level": "info",
+  "use_syslog": true,
+  "worker_threads": 0,
+  "pools": [
+    {
+      "id": 1,
+      "name": "nat_pool",
+      "range_start": 1024,
+      "range_end": 65535,
+      "default_lease_sec": 0
+    },
+    {
+      "id": 2,
+      "name": "vpn_pool",
+      "range_start": 32768,
+      "range_end": 61000,
+      "default_lease_sec": 3600
+    },
+    {
+      "id": 3,
+      "name": "web_proxy_pool",
+      "range_start": 10000,
+      "range_end": 20000,
+      "default_lease_sec": 0
+    }
+  ]
+}
